@@ -1,0 +1,10 @@
+.nodeContainer {
+    padding-left: 20px; /* For indentation of nested nodes */
+}
+
+.nodeItem {
+    padding: 10px;
+    border: 1px solid black;
+    margin: 5px 0;
+    border-radius: 5px;
+}

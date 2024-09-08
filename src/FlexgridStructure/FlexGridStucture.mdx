@@ -1,0 +1,31 @@
+import { Meta, Story } from '@storybook/addon-docs';
+import FlexGridStructure from './FlexGridStructure';
+import Card from './Card';
+
+<Meta title="Patterns/StructuralAdapter/FlexGridStructure" component={FlexGridStructure} />
+
+# FlexGrid Component
+
+The `FlexGridStructure` component is a flexible grid structure that can render child components in a responsive grid layout. It takes configuration like the number of columns and the gap between grid items.
+
+## Props
+
+- **`config`**: An object that defines the grid's layout. It includes:
+- `columns`: Number of columns in the grid (default is 3).
+- `gap`: Gap between the grid items (default is 10px).
+- **`data`**: An array of objects representing the data to be rendered by each child component.
+- **`children`**: The child component that will be rendered for each grid item.
+
+## Example Usage
+
+```jsx
+<FlexGridStructure
+  config={{ columns: 3, gap: '15px' }}
+  data={[
+    { title: 'Card 1', description: 'This is the first card.' },
+    { title: 'Card 2', description: 'This is the second card.' },
+    { title: 'Card 3', description: 'This is the third card.' },
+  ]}
+>
+  <Card />
+</FlexGridStructure>
