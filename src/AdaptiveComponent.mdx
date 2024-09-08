@@ -1,0 +1,49 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Patterns/AdaptiveComponent/Overview" />
+
+## Adaptive Components Pattern
+
+The **Adaptive Components Pattern** refers to a design pattern where components adapt their behavior, structure, or content dynamically based on external conditions or context, such as screen size, device type, network conditions, or user preferences. This pattern is commonly used in responsive web design and applications that need to provide an optimal experience across different environments.
+
+### Key Characteristics:
+1. **Dynamic Content Adaptation**: Components modify their output (e.g., rendering different image sizes, layouts, or content) based on environmental factors.
+2. **Separation of Concerns**: The component’s adaptation logic is kept separate from the actual rendering logic. This keeps the component clean and reusable.
+3. **Optimized Resource Usage**: By adapting to the user’s environment (e.g., using smaller images on mobile devices), the pattern helps reduce bandwidth and improve performance.
+4. **Scalability**: New adaptations (e.g., different screen sizes or device types) can be added with minimal changes to the component's core logic.
+
+### Benefits:
+- **Performance Optimization**: By serving the appropriate resources based on the user’s context, the application can reduce load times and data usage.
+- **Maintainability**: Since adaptation logic is abstracted, the component remains easy to maintain, and additional adaptations can be introduced with minimal changes.
+- **Reusability**: The component can be reused in different contexts, adapting seamlessly to various environments without needing special handling for each use case.
+
+---
+
+### AdaptiveImage Component
+
+The `AdaptiveImage` component is an example of the **Adaptive Components Pattern**. It dynamically adjusts the image source based on the screen size, providing a smaller image on mobile devices and a larger image on desktops. This ensures optimal performance and user experience.
+
+#### Key Features:
+- **Responsive Image Loading**: Uses the `srcSet` and `sizes` attributes to load different image sizes based on the screen size.
+- **Error Handling**: Provides a fallback image in case the image fails to load.
+- **Accessibility**: Ensures that the image has a meaningful alt text and supports ARIA attributes.
+- **Lazy Loading**: Improves performance by lazy-loading images that are not immediately visible.
+
+### Example Code:
+
+```jsx
+<AdaptiveImage
+    url="https://example.com/images"
+    name="example-image"
+    extension="jpg"
+    altText="An example image"
+    ariaLabel="Decorative Image"
+    fallbackUrl="https://example.com/images/fallback.jpg"
+/>
+```
+
+---
+
+### Conclusion
+
+The **Adaptive Components Pattern** helps build flexible, efficient, and reusable components that respond to the environment they're running in, whether it be a mobile device, desktop, or low-bandwidth network.

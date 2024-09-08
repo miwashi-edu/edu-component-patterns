@@ -1,0 +1,29 @@
+import { Meta } from '@storybook/addon-docs';
+import CopyImageButtonDecorator from './CopyImageButtonDecorator.jsx';
+
+# CopyImageButtonDecorator
+
+<Meta title="Patterns/Decorator/CopyImageButtonDecorator/Overview" component={CopyImageButtonDecorator}  />
+
+The **CopyImageButtonDecorator** wraps around any visual component (e.g., images, diagrams) and allows users to copy the rendered content as an image (PNG) to the clipboard.
+
+## Props
+- `children`: The component (e.g., an image or diagram) that will be copied.
+
+## Example
+
+```jsx
+import CopyImageButtonDecorator from './CopyImageButtonDecorator';
+import ImageViewer from './ImageViewer';
+
+<CopyImageButtonDecorator>
+    <ImageViewer url="/img/example_image.png" altText="Example image" />
+</CopyImageButtonDecorator>
+```
+
+## Features
+- Converts the rendered child component to PNG using `html-to-image`.
+- Copies the image content to the clipboard when the user clicks the "Copy" button.
+
+## Usage
+Use **CopyImageButtonDecorator** for cases where users need to copy visual content directly to the clipboard.

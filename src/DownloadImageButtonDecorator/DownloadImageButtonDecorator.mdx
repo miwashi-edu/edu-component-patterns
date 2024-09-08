@@ -1,0 +1,29 @@
+import { Meta, Story, Canvas, Primary } from '@storybook/addon-docs';
+import DownloadImageButtonDecorator from './DownloadImageButtonDecorator.jsx';
+
+# DownloadImageButtonDecorator
+
+<Meta title="Patterns/Decorator/DownloadImageButtonDecorator/Overview" component={DownloadImageButtonDecorator}  />
+
+The **DownloadImageButtonDecorator** provides a "Download as PNG" button for any visual component, allowing users to download the rendered content as a PNG file.
+
+## Props
+- `children`: The component (e.g., an image or diagram) that will be downloaded.
+
+## Example
+
+```jsx
+import DownloadImageButtonDecorator from './DownloadImageButtonDecorator';
+import ImageViewer from './ImageViewer';
+
+<DownloadImageButtonDecorator>
+    <ImageViewer url="/img/example_image.png" altText="Example image" />
+</DownloadImageButtonDecorator>
+```
+
+## Features
+- Converts the rendered child component to PNG using `html-to-image`.
+- Provides a download link, allowing users to download the image as a PNG.
+
+## Usage
+Use **DownloadImageButtonDecorator** when you need to allow users to download visual content as an image file (PNG).

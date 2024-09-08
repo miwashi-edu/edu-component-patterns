@@ -1,0 +1,30 @@
+import { Meta, Story, Canvas, Primary } from '@storybook/addon-docs';
+import CopyButtonDecorator from './CopyButtonDecorator.jsx';
+
+# CopyButtonDecorator
+
+<Meta title="Patterns/Decorator/CopyButtonDecorator/Overview" component={CopyButtonDecorator}  />
+
+The **CopyButtonDecorator** wraps around any component with a `data` prop and provides a copy button. When the button is clicked, the `data` prop of the child component is copied to the clipboard as a string.
+
+## Props
+- `children`: The component that contains the `data` prop to be copied.
+
+## Example
+
+```jsx
+import CopyButtonDecorator from './CopyButtonDecorator';
+import MyComponent from './MyComponent';
+
+<CopyButtonDecorator>
+    <MyComponent data={{ key1: 'value1', key2: 'value2' }} />
+</CopyButtonDecorator>
+```
+
+## Features
+- Copies the `data` prop of the wrapped component to the clipboard as JSON.
+- Simple interface with a single `Copy` button.
+
+## Usage
+Use the **CopyButtonDecorator** when you want to quickly add a copy-to-clipboard feature to any component that provides data.
+
