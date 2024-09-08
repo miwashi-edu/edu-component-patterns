@@ -1,0 +1,42 @@
+/* util.module.css */
+.jsonContainer {
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.jsonContent {
+    background-color: #282c34;
+    color: #61dafb;
+    padding: 15px;
+    border-radius: 8px;
+    overflow-x: auto;
+}
+
+.copyButton {
+    background-color: #61dafb;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.copyButton:hover {
+    background-color: #21a1f1;
+}
+
+.noData, .error {
+    color: red;
+    font-weight: bold;
+}
+
+pre {
+    background-color: #282c34;
+    color: #61dafb;
+    padding: 15px;
+    border-radius: 8px;
+    overflow-x: auto;
+}

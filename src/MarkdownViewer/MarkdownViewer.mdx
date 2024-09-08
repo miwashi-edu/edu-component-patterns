@@ -1,0 +1,67 @@
+
+import { Meta, Story, Canvas, Primary } from '@storybook/addon-docs';
+import MarkdownViewer from './MarkdownViewer';
+import Default from './MarkdownViewer.stories.jsx';
+
+<Meta title="Util/MarkdownViewer" component={MarkdownViewer} of={Default} />
+
+# MarkdownViewer Component
+
+The `MarkdownViewer` component takes markdown text and renders it into HTML. It uses **marked** to parse the markdown and **DOMPurify** to sanitize the output to prevent XSS attacks.
+
+## Props
+
+- **`markdownText`**: A string containing markdown that will be rendered into HTML.
+- **`children`**: You can pass markdown content as children when `markdownText` is not provided. If both `markdownText` and `children` are provided, `markdownText` will take precedence.
+
+## Example Usage
+
+```jsx
+<MarkdownViewer markdownText={\`# Example Markdown
+This is **bold** text.
+\`} />
+```
+
+You can also pass markdown content as children:
+
+```jsx
+<MarkdownViewer>
+    {`# Example Markdown
+This is **bold** text.`}
+</MarkdownViewer>
+```
+
+## Storybook Preview
+
+<Canvas>
+    <Primary />
+</Canvas>
+
+## Security with DOMPurify
+
+The `MarkdownViewer` component sanitizes the generated HTML using **DOMPurify**. This ensures that any potentially harmful HTML or scripts injected through the markdown are removed, making the component safe to use even with user-generated content.
+
+### Example of Sanitization
+
+```jsx
+<MarkdownViewer markdownText={\`# Dangerous Content
+<script>alert('Hacked!');</script>
+This content is sanitized and the script won't run.
+\`} />
+```
+
+### Customizing Markdown Rendering
+
+You can customize how the markdown is rendered by passing different markdown content to the `markdownText` prop or using children.
+
+```jsx
+<MarkdownViewer>
+    {`# Custom Markdown
+- List item 1
+- List item 2`}
+</MarkdownViewer>
+```
+
+### Conclusion:
+
+The `MarkdownViewer` is a flexible and secure way to render markdown content in React. Its use of **marked** for markdown parsing and **DOMPurify** for sanitizing ensures both usability and security.

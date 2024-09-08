@@ -1,8 +1,9 @@
-import { Meta, Story, Canvas } from '@storybook/addon-docs';
-import RecursiveStructure from './RecursiveStructure';
-import Node from './Node';
 
-<Meta title="Patterns/StructuralAdapter/RecursiveStructure" component={RecursiveStructure} />
+import { Meta, Story, Canvas, Primary } from '@storybook/addon-docs';
+import RecursiveStructure from './RecursiveStructure';
+import Default from './RecursiveStructure.stories.jsx';
+
+<Meta title="Patterns/StructuralAdapter/RecursiveStructure" component={RecursiveStructure} of={Default} />
 
 # RecursiveStructure Component
 
@@ -25,3 +26,35 @@ The `RecursiveStructure` component is designed to handle hierarchical or recursi
 }}>
   <Node />
 </RecursiveStructure>
+```
+
+## Storybook Preview
+
+<Canvas>
+    <Primary />
+</Canvas>
+
+## Customization and Nested Data
+
+You can pass in nested data structures to recursively display nodes at various levels. The depth is handled automatically, and each node can have its own child nodes, which will render recursively.
+
+### Example with Nested Data:
+
+```jsx
+<RecursiveStructure node={{
+  nodes: [
+    { id: 1, name: 'Node 1' },
+    { id: 2, name: 'Node 2', nodes: [
+      { id: 3, name: 'Node 3', nodes: [
+        { id: 4, name: 'Node 4' }
+      ]}
+    ]}
+  ]
+}}>
+  <Node />
+</RecursiveStructure>
+```
+
+### Conclusion:
+
+The `RecursiveStructure` component is a powerful tool for rendering hierarchical data in a tree-like structure. Its flexibility allows for complex nested structures to be displayed in an organized and readable format.

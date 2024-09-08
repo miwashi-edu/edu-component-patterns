@@ -1,0 +1,73 @@
+
+import { Meta, Story, Canvas, Primary } from '@storybook/addon-docs';
+import MermaidViewer from './MermaidViewer';
+import Default from './MermaidViewer.stories.jsx';
+
+<Meta title="Patterns/ContentViewer/MermaidViewer" component={MermaidViewer} of={Default} />
+
+# MermaidViewer Component
+
+The `MermaidViewer` component is used to render diagrams defined in the **Mermaid** syntax. It takes a string of Mermaid chart definitions and renders it as a diagram using the Mermaid library.
+
+## Props
+
+- **`chart`**: A string containing a Mermaid chart definition that will be rendered into a diagram. The chart is parsed and rendered, and any errors are caught and displayed.
+
+## Example Usage
+
+Here’s an example of how to use the `MermaidViewer` component:
+
+```jsx
+<MermaidViewer chart={`graph TD; A-->B; A-->C; B-->D; C-->D;`} />
+```
+
+You can also define a chart in a separate file and pass it to the component:
+
+```jsx
+import classDiagram from './charts/class-diagram.js';
+
+<MermaidViewer chart={classDiagram} />
+```
+
+## Storybook Preview
+
+<Canvas>
+    <Primary />
+</Canvas>
+
+## Mermaid Initialization
+
+The `MermaidViewer` component uses **Mermaid.js** to render the diagrams. You can pass custom configuration options by modifying the `mermaidConfig` object. The Mermaid configuration used in the `MermaidViewer` includes:
+
+- **`theme`**: The theme for Mermaid diagrams (default is `'default'`).
+- **`securityLevel`**: Defines the security level (default is `'loose'` for more relaxed HTML).
+- **`fontFamily`**: Specifies the font used in the diagram (default is `'Fira Code'`).
+
+### Example of Configuration:
+
+```javascript
+const mermaidConfig = {
+    startOnLoad: true,
+    theme: 'forest',
+    securityLevel: 'strict',
+    fontFamily: 'Arial',
+};
+
+mermaid.initialize(mermaidConfig);
+```
+
+You can customize the rendering of Mermaid charts by altering the Mermaid configuration.
+
+### Error Handling
+
+The `MermaidViewer` component also has built-in error handling. If the chart contains any invalid syntax or Mermaid fails to render the chart, an error message will be displayed in red.
+
+```jsx
+<MermaidViewer chart={`invalid chart`} />
+```
+
+This will display an error message like: `Error parsing Mermaid definition`.
+
+### Conclusion:
+
+The `MermaidViewer` component provides a flexible way to render Mermaid diagrams in React. It supports custom configuration and error handling to ensure that even complex diagrams are rendered safely and reliably.

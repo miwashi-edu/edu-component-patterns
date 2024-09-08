@@ -1,0 +1,111 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs';
+import JsonViewer from './JsonViewer';
+import Default from './JsonViewer.stories.jsx';
+
+
+<Meta title="Patterns/ContentViewer/JsonViewer" component={JsonViewer} of={Default} />
+
+
+# JsonViewer Component
+
+The `JsonViewer` component is designed to display JSON data in a formatted and readable manner. It can handle both JSON strings and objects, and it uses **Prism.js** to provide syntax highlighting for better readability.
+
+## Props
+
+- **`data`**: The JSON data to be displayed. This can either be a valid JSON string or a JavaScript object. The component handles parsing and formatting the data for display.
+- If an invalid JSON string is provided, an error message will be shown.
+
+## Example Usage
+
+```jsx
+<JsonViewer
+    data={{
+        name: 'John Doe',
+        age: 30,
+        address: {
+            street: '123 Main St',
+            city: 'Hometown',
+            country: 'Wonderland',
+        },
+    }}
+/>
+```
+
+## Storybook Preview
+
+<Canvas>
+    <Story name="Default">
+        <JsonViewer
+            data={{
+                name: 'John Doe',
+                age: 30,
+                address: {
+                    street: '123 Main St',
+                    city: 'Hometown',
+                    country: 'Wonderland',
+                },
+            }}
+        />
+    </Story>
+</Canvas>
+
+## Syntax Highlighting with Prism.js
+
+The `JsonViewer` uses **Prism.js** to add syntax highlighting to the rendered JSON. Prism.js is a popular library for lightweight, extensible syntax highlighting. We load the **JSON syntax** for highlighting JSON data specifically and a theme for styling.
+
+### Setting up Prism.js
+To enable syntax highlighting using Prism.js:
+
+1. **Install Prism.js**:
+
+ ```bash
+ npm install prismjs
+    ```
+
+2. **Import Prism.js and the necessary components** in the `JsonViewer` component:
+
+ ```jsx
+ import Prism from 'prismjs';
+ import 'prismjs/themes/prism-tomorrow.css'; // Choose a theme
+ import 'prismjs/components/prism-json'; // Load JSON syntax highlighting
+    ```
+
+3. **Apply syntax highlighting** in the `JsonViewer` component by calling `Prism.highlightAll()` in the `useEffect` hook:
+
+ ```jsx
+ useEffect(() => {
+     Prism.highlightAll();
+ }, [data]);
+    ```
+
+### Available Themes
+
+Prism.js provides a wide variety of themes to suit different UI designs. Some popular ones include:
+- `prism-tomorrow.css` (dark theme)
+- `prism.css` (light theme)
+- `prism-okaidia.css` (bold colors)
+
+You can browse more themes on the [Prism.js website](https://prismjs.com/#themes).
+
+### Syntax Highlighting in JsonViewer
+
+When you pass a JSON object or string to the `JsonViewer`, the data will be displayed with color-coded syntax. Here's an example of how JSON data will be rendered with Prism.js:
+
+```json
+{
+  "name": "John Doe",
+  "age": 30,
+  "address": {
+    "street": "123 Main St",
+    "city": "Hometown",
+    "country": "Wonderland"
+  }
+}
+```
+
+The data is formatted with proper indentation and syntax highlighting, which improves readability, especially for large JSON datasets.
+
+### Conclusion:
+
+The `JsonViewer` is an adaptable and powerful component for rendering JSON data. The integration of **Prism.js** for syntax highlighting makes it an excellent tool for displaying structured data in a clear, readable, and interactive format.
+

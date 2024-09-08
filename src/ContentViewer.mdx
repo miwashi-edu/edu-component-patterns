@@ -1,0 +1,71 @@
+import { Meta } from '@storybook/addon-docs';
+
+## ContentViewer Pattern
+
+<Meta title="Patterns/ContentViewer/Overview" />
+
+The **ContentViewer Pattern** is a pattern used in React to display various types of content (such as JSON, Markdown, Images, Diagrams, etc.) in a standardized way. The key concept behind this pattern is that the viewer components are responsible for rendering specific content types while keeping the interface flexible and reusable.
+
+## Benefits
+
+1. **Separation of Concerns**: Each viewer component is responsible for rendering one specific type of content (e.g., JSON, Markdown, Image), which separates the logic for rendering content from the overall application structure.
+
+2. **Extensibility**: New content types can easily be added by creating new viewer components that follow the same pattern, making the architecture scalable.
+
+3. **Reusability**: Viewer components can be reused across different parts of the application wherever that specific type of content needs to be displayed.
+
+## Example Usage
+
+In a **ContentViewer Pattern**, different viewers can be created for different types of content. Here are some examples of how these viewers might be implemented:
+
+### JSON Viewer
+
+A viewer component that renders JSON data in a readable format.
+
+```jsx
+const JsonViewer = ({ data }) => {
+    const jsonString = JSON.stringify(data, null, 2);
+    return (
+        <pre>
+            <code>{jsonString}</code>
+        </pre>
+    );
+};
+
+// Usage
+<JsonViewer data={{ key: 'value', nested: { key: 'nestedValue' } }} />
+```
+
+
+### Markdown Viewer
+
+A viewer component that renders Markdown content.
+
+```jsx
+const MarkdownViewer = ({ markdownText }) => {
+    const htmlContent = marked(markdownText);  // Using marked.js for Markdown conversion
+    return (
+        <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(htmlContent) }} />
+    );
+};
+
+// Usage
+<MarkdownViewer markdownText={`# This is a header\n\nThis is a paragraph.`} />
+```
+
+### Image Viewer
+
+A viewer component that renders images from a URL or file path.
+jsx
+```
+const ImageViewer = ({ imageUrl }) => {
+    return <img src={imageUrl} alt="content" style={{ maxWidth: '100%' }} />;
+};
+
+// Usage
+<ImageViewer imageUrl="https://example.com/image.png" />
+```
+
+## Conclusion
+
+The **ContentViewer Pattern** is ideal for applications that need to handle multiple types of content in a modular, reusable manner. It allows the application to remain flexible and scalable, as new content viewers can be added with ease while keeping the code maintainable.

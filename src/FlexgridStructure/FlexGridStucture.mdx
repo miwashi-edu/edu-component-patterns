@@ -1,22 +1,25 @@
-import { Meta, Story } from '@storybook/addon-docs';
+
+import { Meta, Story, Canvas, Primary } from '@storybook/addon-docs';
 import FlexGridStructure from './FlexGridStructure';
-import Card from './Card';
+import Default from './FlexGridStructure.stories.jsx';
 
-<Meta title="Patterns/StructuralAdapter/FlexGridStructure" component={FlexGridStructure} />
+<Meta title="Patterns/StructuralAdapter/FlexGridStructure" component={FlexGridStructure} of={Default} />
 
-# FlexGrid Component
+# FlexGridStructure Component
 
-The `FlexGridStructure` component is a flexible grid structure that can render child components in a responsive grid layout. It takes configuration like the number of columns and the gap between grid items.
+The `FlexGridStructure` component provides a flexible grid layout structure, capable of displaying items in a grid format. The number of columns and gap between grid items can be controlled via the `config` prop.
 
 ## Props
 
-- **`config`**: An object that defines the grid's layout. It includes:
-- `columns`: Number of columns in the grid (default is 3).
-- `gap`: Gap between the grid items (default is 10px).
-- **`data`**: An array of objects representing the data to be rendered by each child component.
-- **`children`**: The child component that will be rendered for each grid item.
+- **`config`**: An object to define the grid's layout. This includes:
+- `columns`: The number of columns in the grid (default is 3).
+- `gap`: The gap between the grid items (default is 10px).
+- **`data`**: An array of objects representing the data to be rendered in each grid cell.
+- **`children`**: The child component that will be rendered inside each grid cell.
 
 ## Example Usage
+
+Here is an example usage of the `FlexGridStructure` component with 3 columns and some sample data:
 
 ```jsx
 <FlexGridStructure
@@ -29,3 +32,34 @@ The `FlexGridStructure` component is a flexible grid structure that can render c
 >
   <Card />
 </FlexGridStructure>
+```
+
+## Storybook Preview
+
+<Canvas>
+    <Primary />
+</Canvas>
+
+## Customizing the Grid Layout
+
+The grid layout can be customized by adjusting the `config` prop. You can define the number of columns and the gap between items to create layouts that suit different screen sizes and content types.
+
+### Example Customization:
+
+```jsx
+<FlexGridStructure
+  config={{ columns: 4, gap: '20px' }}
+  data={[
+    { title: 'Card 1', description: 'This is the first card.' },
+    { title: 'Card 2', description: 'This is the second card.' },
+    { title: 'Card 3', description: 'This is the third card.' },
+    { title: 'Card 4', description: 'This is the fourth card.' },
+  ]}
+>
+  <Card />
+</FlexGridStructure>
+```
+
+### Conclusion:
+
+The `FlexGridStructure` component offers a flexible, customizable grid layout that can display various content types in a grid format. By adjusting the configuration, you can easily adapt the layout to different use cases and data sets.
