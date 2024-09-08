@@ -1,0 +1,118 @@
+/* Login.module.css */
+
+/* Login.module.css */
+
+/* Container for the entire login form */
+.container {
+    display: flex;
+    justify-content: center; /* Center the login form horizontally */
+    align-items: center; /* Center the login form vertically */
+    min-height: 100vh; /* Make sure the container takes up the full viewport height */
+    background-color: #f4f4f4; /* Light background color for the form */
+    padding: 1rem; /* Add some padding around the container */
+    box-sizing: border-box; /* Ensure padding is included in the width and height calculations */
+}
+
+/* Styles for the login form itself */
+.login {
+    background-color: white; /* Set the background to white for the form */
+    padding: 2rem; /* Add padding inside the form */
+    border-radius: 8px; /* Round the corners of the form */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for depth */
+    max-width: 400px; /* Limit the maximum width of the form */
+    width: 100%; /* Make sure the form takes up the full width up to the max-width */
+}
+
+/* Style for spacing between UserAtom and PasswordAtom components */
+.userContainer,
+.passwordContainer {
+    margin-bottom: 1rem; /* Adds space between the input fields */
+}
+
+/* Optional: Styling for a submit button, if you add one */
+.submitButton {
+    background-color: #007bff;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.submitButton:hover {
+    background-color: #0056b3;
+}
+
+
+/* Container for the user input and label */
+.userContainer {
+    margin-bottom: 1rem; /* Adds some space below the input field */
+    display: flex;
+    flex-direction: column; /* Aligns label and input vertically */
+    width: 100%; /* Ensures the container takes up the full width available */
+}
+
+/* Styles for the label */
+.userLabel {
+    font-size: 1rem; /* Sets a standard font size */
+    margin-bottom: 0.5rem; /* Adds space between the label and the input */
+    color: #333; /* Dark gray color for the label */
+    font-weight: 600; /* Makes the label text bold */
+}
+
+/* Styles for the input field */
+.userInput {
+    padding: 0.5rem; /* Adds padding inside the input for better usability */
+    font-size: 1rem; /* Ensures the input text is easily readable */
+    border: 1px solid #ccc; /* Light gray border for the input */
+    border-radius: 4px; /* Slightly rounds the corners of the input */
+    width: 100%; /* Makes the input take up the full width of the container */
+    box-sizing: border-box; /* Ensures padding is included in the element's width/height */
+}
+
+/* Additional styling for better user interaction */
+.userInput:focus {
+    border-color: #007bff; /* Changes the border color when the input is focused */
+    outline: none; /* Removes the default browser outline on focus */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Adds a subtle shadow effect on focus */
+}
+
+
+/* Login.module.css */
+
+/* Container for the password input and label */
+.passwordContainer {
+    margin-bottom: 1rem; /* Adds space below the input field */
+    display: flex;
+    flex-direction: column; /* Aligns label and input vertically */
+    width: 100%; /* Ensures the container takes up the full width available */
+}
+
+/* Styles for the label (if you add one) */
+.passwordLabel {
+    font-size: 1rem; /* Sets a standard font size */
+    margin-bottom: 0.5rem; /* Adds space between the label and the input */
+    color: #333; /* Dark gray color for the label */
+    font-weight: 600; /* Makes the label text bold */
+}
+
+/* Styles for the input field */
+.passwordInput {
+    padding: 0.5rem; /* Adds padding inside the input for better usability */
+    font-size: 1rem; /* Ensures the input text is easily readable */
+    border: 1px solid #ccc; /* Light gray border for the input */
+    border-radius: 4px; /* Slightly rounds the corners of the input */
+    width: 100%; /* Makes the input take up the full width of the container */
+    box-sizing: border-box; /* Ensures padding is included in the element's width/height */
+}
+
+/* Additional styling for better user interaction */
+.passwordInput:focus {
+    border-color: #007bff; /* Changes the border color when the input is focused */
+    outline: none; /* Removes the default browser outline on focus */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Adds a subtle shadow effect on focus */
+}

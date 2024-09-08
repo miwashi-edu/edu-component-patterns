@@ -1,0 +1,102 @@
+
+import { Meta } from '@storybook/addon-docs';
+
+# State Propagating Pattern
+
+<Meta title="Patterns/StatePropagating/Overview" />
+
+The **State Propagating Pattern** is used when a parent component passes down its state to child components via props. The child components reflect changes based on the state received, but do not directly modify the state themselves.
+
+This is useful when child components need to display or utilize state but don't need to manage it.
+
+## Pattern Overview
+
+In this example, the `Drill` component controls a language state through a `LanguageSwitcher` (which uses state lifting). The selected language is then propagated to the `Card` component, which updates its content based on the current language.
+
+## Example
+
+```jsx
+import React, { useState } from 'react';
+import LanguageSwitcher from './LanguageSwitcher';
+import Card from './Card';
+import styles from './Drill.module.css';
+
+const Drill = () => {
+    const [language, setLanguage] = useState('en');  // State lifted to parent
+
+    const handleLanguageSwitch = (newLanguage) => {
+        setLanguage(newLanguage);
+    };
+
+    return (
+        <div className={styles.drillContainer}>
+            <LanguageSwitcher onLanguageChange={handleLanguageSwitch} />
+            <Card language={language} />
+        </div>
+    );
+};
+
+export default Drill;
+```
+
+## Child Components
+
+### LanguageSwitcher (State Lifting)
+
+The `LanguageSwitcher` component allows the user to select a language, and it lifts the selected language up to the parent `Drill` component.
+
+```jsx
+import React from 'react';
+import styles from './Drill.module.css';
+
+const LanguageSwitcher = ({ onLanguageChange }) => {
+    const handleLanguageSelect = (e) => {
+        onLanguageChange(e.target.value);
+    };
+
+    return (
+        <div className={styles.switcher}>
+            <label>Select Language: </label>
+            <select onChange={handleLanguageSelect}>
+                <option value="en">English</option>
+                <option value="fr">French</option>
+                <option value="es">Spanish</option>
+            </select>
+        </div>
+    );
+};
+
+export default LanguageSwitcher;
+```
+
+### Card (State Propagation)
+
+The `Card` component receives the `language` prop and updates its content based on the selected language.
+
+```jsx
+import React from 'react';
+import styles from './Drill.module.css';
+
+const Card = ({ language }) => {
+    const messages = {
+        en: 'Hello!',
+        fr: 'Bonjour!',
+        es: '¡Hola!'
+    };
+
+    return (
+        <div className={styles.card}>
+            <p>{messages[language]}</p>
+        </div>
+    );
+};
+
+export default Card;
+```
+
+## Features
+- **State Lifting**: The language state is lifted to the parent `Drill` component using the `LanguageSwitcher` child component.
+- **State Propagation**: The state is then propagated to the `Card` component, which updates its content accordingly.
+
+## Usage
+Use the **State Propagating Pattern** when the child component needs to display or respond to state passed down from the parent without directly modifying it.

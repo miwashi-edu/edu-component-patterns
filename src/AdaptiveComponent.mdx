@@ -1,3 +1,4 @@
+
 import { Meta } from '@storybook/addon-docs';
 
 <Meta title="Patterns/AdaptiveComponent/Overview" />
@@ -41,6 +42,28 @@ The `AdaptiveImage` component is an example of the **Adaptive Components Pattern
     fallbackUrl="https://example.com/images/fallback.jpg"
 />
 ```
+
+---
+
+### AdaptiveSizePropagator Component
+
+The `AdaptiveSizePropagator` is another example of the **Adaptive Components Pattern**. It dynamically propagates a `size` prop to its child components based on the current screen size. The screen size is determined through CSS media queries, and the size is passed down as a prop to all children.
+
+#### Key Features:
+- **Dynamic Propagation**: Automatically propagates the `size` prop (e.g., `tiny`, `small`, `medium`, `large`, `xLarge`) to all child components.
+- **Responsive**: Adjusts size based on media query breakpoints.
+- **Flexible**: Can be used to dynamically modify content or layout based on screen size without manually handling the logic inside child components.
+
+### Example Code:
+
+```jsx
+<AdaptiveSizePropagator>
+    <SampleComponent />
+    <SampleComponent />
+</AdaptiveSizePropagator>
+```
+
+In the above example, `SampleComponent` will receive a `size` prop, allowing it to adjust its rendering logic based on the current screen size. This pattern ensures that components can automatically adapt without requiring additional logic in each individual component.
 
 ---
 

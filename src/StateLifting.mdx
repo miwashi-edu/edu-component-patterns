@@ -1,0 +1,108 @@
+import { Meta } from '@storybook/addon-docs';
+
+# State Lifting Pattern
+
+<Meta title="Patterns/StateLifting/Overview" />
+
+The **State Lifting Pattern** is used in React when multiple child components need to share and synchronize state. In this pattern, the state is "lifted" to the parent component, which manages the state, while child components communicate through callbacks to modify the state.
+
+This pattern is useful in forms where multiple input fields (like username and password) need to work together and update the state in a coordinated way.
+
+## Pattern Overview
+
+In this example, we have a `Login` component that lifts state for both the `UserAtom` and `PasswordAtom` components, allowing the parent to control the state. The child components trigger updates through callback functions.
+
+## Example
+
+```jsx
+import React, { useState } from 'react';
+import UserAtom from './UserAtom';
+import PasswordAtom from './PasswordAtom';
+import LoginButton from './LoginButtonAtom';
+import styles from './Login.module.css';
+
+const Login = ({ loginFunction }) => {
+    const [user, setUser] = useState('');
+    const [password, setPassword] = useState('');
+
+    const handleLoginClick = () => {
+        if (loginFunction) {
+            loginFunction(user, password);
+        } else {
+            console.error('No login function provided!');
+            console.error('User:', user);
+            console.error('Password:', password);
+        }
+    };
+
+    return (
+        <div className={styles.container}>
+            <div className={styles.login}>
+                <UserAtom onUserChange={setUser} />
+                <PasswordAtom onPasswordChange={setPassword} />
+                <LoginButton onClick={handleLoginClick} />
+            </div>
+        </div>
+    );
+};
+
+export default Login;
+```
+
+## Child Components
+
+### UserAtom
+
+```jsx
+import React from 'react';
+import styles from './Login.module.css';
+
+const UserAtom = ({ onUserChange, label = 'Username' }) => {
+    const handleChange = (e) => {
+        onUserChange(e.target.value);
+    };
+
+    return (
+        <div className={styles.userContainer}>
+            <label className={styles.userLabel}>
+                {label}:
+                <input type="text" onChange={handleChange} placeholder="Enter username" className={styles.userInput} />
+            </label>
+        </div>
+    );
+};
+
+export default UserAtom;
+```
+
+### PasswordAtom
+
+```jsx
+import React from 'react';
+import styles from './Login.module.css';
+
+const PasswordAtom = ({ onPasswordChange, label = 'Password' }) => {
+    const handleChange = (e) => {
+        onPasswordChange(e.target.value);
+    };
+
+    return (
+        <div className={styles.passwordContainer}>
+            <label className={styles.passwordLabel}>
+                {label}:
+                <input type="password" onChange={handleChange} placeholder="Enter password" className={styles.passwordInput} />
+            </label>
+        </div>
+    );
+};
+
+export default PasswordAtom;
+```
+
+## Features
+- Lifts state up to the parent component to synchronize changes between multiple child components.
+- Used commonly in forms where several inputs need to share and update state together.
+
+## Usage
+Use the **State Lifting Pattern** when multiple child components need to communicate and share state through a common parent.
+

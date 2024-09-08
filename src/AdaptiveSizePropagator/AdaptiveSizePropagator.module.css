@@ -1,0 +1,36 @@
+.adaptiveSizePropagator {
+    position: relative;
+}
+
+.adaptiveSizePropagator::after {
+    content: 'tiny'; /* Default size for very small screens */
+    display: none; /* Ensures the content is not visible */
+}
+
+/* Small screens (from 576px) */
+@media (min-width: 576px) {
+    .adaptiveSizePropagator::after {
+        content: 'small';
+    }
+}
+
+/* Medium screens (from 768px) */
+@media (min-width: 768px) {
+    .adaptiveSizePropagator::after {
+        content: 'medium';
+    }
+}
+
+/* Large screens (from 992px) */
+@media (min-width: 992px) {
+    .adaptiveSizePropagator::after {
+        content: 'large';
+    }
+}
+
+/* Extra large screens (from 1200px) */
+@media (min-width: 1200px) {
+    .adaptiveSizePropagator::after {
+        content: 'xLarge';
+    }
+}
