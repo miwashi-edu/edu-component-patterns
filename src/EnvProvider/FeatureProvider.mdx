@@ -1,0 +1,80 @@
+import { Meta, Story, Canvas, Primary } from '@storybook/addon-docs';
+
+import {FeatureProvider} from './FeatureProvider.jsx';
+import Default from './FeatureProvider.stories.jsx';
+
+<Meta title="Patterns/Provider/FeatureProvider" component={FeatureProvider} of={Default} />
+
+# FeatureProvider
+
+The `FeatureProvider` is a React context provider that manages feature flags across the application. It fetches feature toggles from a backend endpoint and provides them to components via a React context.
+
+## Usage
+
+Wrap your component tree with the `FeatureProvider` to manage feature toggles throughout the application:
+
+```jsx
+import React from 'react';
+import {{ FeatureProvider }} from './contexts/FeatureProvider';
+
+const App = () => {{
+  return (
+    <FeatureProvider>
+      <YourComponent />
+    </FeatureProvider>
+  );
+}};
+
+export default App;
+```
+
+## Example of Context Usage
+
+Access feature toggles using the `useFeatures` hook in any component:
+
+```jsx
+import React from 'react';
+import {{ useFeatures }} from './contexts/FeatureProvider';
+
+const FeatureComponent = () => {{
+    const features = useFeatures();
+    return <div>Feature X is {{features.featureX ? 'Enabled' : 'Disabled'}}</div>;
+}};
+
+export default FeatureComponent;
+```
+
+{/* <Props of={FeatureProvider} /> */}
+
+## FeatureProvider
+
+```jsx
+import React, { createContext, useContext, useEffect, useState } from 'react';
+
+export const FeatureContext = createContext({});
+
+export const FeatureProvider = ({ children }) => {
+    const [features, setFeatures] = useState({});
+
+    useEffect(() => {
+        const backendUrl = import.meta.env.VITE_BACKEND || 'http://localhost:3000';
+        const featureEndpoint = import.meta.env.VITE_FEATURE_ENDPOINT || '/api/features';
+        const fullUrl = `${backendUrl}${featureEndpoint}`;
+
+        fetch(fullUrl)
+            .then(response => response.json())
+            .then(data => {
+                setFeatures(data);
+            })
+            .catch(error => console.error("Failed to load features:", error));
+    }, []);
+
+    return (
+        <FeatureContext.Provider value={features}>
+            {children}
+        </FeatureContext.Provider>
+    );
+};
+
+export const useFeatures = () => useContext(FeatureContext);
+```

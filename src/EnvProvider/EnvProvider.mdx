@@ -1,0 +1,81 @@
+import { Meta, Story, Canvas, Primary } from '@storybook/addon-docs';
+
+import {EnvProvider} from './EnvProvider.jsx';
+import Default from './EnvProvider.stories.jsx';
+
+<Meta title="Patterns/Provider/EnvProvider" component={EnvProvider} of={Default} />
+
+# EnvProvider
+
+The `EnvProvider` is a React context provider designed to expose environment variables to the React application. It fetches configuration from the backend and supplies it to any consuming components via a React context.
+
+## Usage
+
+Here’s how you can wrap your application with the `EnvProvider`:
+
+```jsx
+import React from 'react';
+import {{ EnvProvider }} from './contexts/EnvProvider';
+
+const App = () => {{
+  return (
+    <EnvProvider>
+      <YourComponent />
+    </EnvProvider>
+  );
+}};
+
+export default App;
+```
+
+## Example of Context Usage
+
+Components within the `EnvProvider` can access the environment variables using the `useEnv` hook:
+
+```jsx
+import React from 'react';
+import {{ useEnv }} from './contexts/EnvProvider';
+
+const SomeComponent = () => {{
+    const env = useEnv();
+    return <div>API URL: {{env.apiUrl}}</div>;
+}};
+
+export default SomeComponent;
+```
+
+{/* <Props of={EnvProvider} /> */}
+
+## EnvProvider
+
+```jsx
+import React, { createContext, useContext, useEffect, useState } from 'react';
+
+export const EnvContext = createContext({});
+
+export const EnvProvider = ({ children, value }) => {
+    const [env, setEnv] = useState(value || {});
+
+    useEffect(() => {
+        const backendUrl = import.meta.env.VITE_BACKEND || 'http://localhost:3000';
+        const featureEndpoint = import.meta.env.VITE_ENV_ENDPOINT || '/api/frontend-env';
+        const fullUrl = `${backendUrl}${featureEndpoint}`;
+
+        fetch(fullUrl)
+            .then(response => response.json())
+            .then(data => {
+                setEnv(data);
+            })
+            .catch(error => console.error("Failed to load environment variables:", error));
+        }, []);
+
+    return (
+        <EnvContext.Provider value={env}>
+            {children}
+        </EnvContext.Provider>
+    );
+};
+
+export const useEnv = () => useContext(EnvContext);
+```
+

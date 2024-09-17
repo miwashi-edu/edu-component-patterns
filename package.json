@@ -27,7 +27,7 @@
     "@chromatic-com/storybook": "^1.9.0",
     "@eslint/js": "^9.9.0",
     "@mdx-js/react": "^3.0.1",
-    "@storybook/addon-docs": "^8.2.9",
+    "@storybook/addon-docs": "^8.3.1",
     "@storybook/addon-essentials": "^8.2.9",
     "@storybook/addon-interactions": "^8.2.9",
     "@storybook/addon-links": "^8.2.9",
