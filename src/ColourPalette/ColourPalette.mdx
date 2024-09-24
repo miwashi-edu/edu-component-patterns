@@ -1,0 +1,55 @@
+
+import { Meta, Story, Canvas, Primary } from '@storybook/addon-docs';
+
+import ColourPalette from './ColourPalette';
+import Default from './ColourPalette.stories.jsx';
+
+<Meta title="Patterns/StylingInjection/ColourPalette" component={ColourPalette} of={Default} />
+
+# ColourPalette Component
+
+The `ColourPalette` component provides a visual representation of a predefined set of colors. This pattern is used to display application-level color palettes and ensure a consistent theme across components.
+
+## Props
+
+- **No configurable props**: The `ColourPalette` component is purely presentational, relying on CSS variables for color definitions.
+
+## Example Usage
+
+Here is an example usage of the `ColourPalette` component to render a set of color swatches based on a CSS color palette:
+
+```jsx
+<ColourPalette />
+```
+
+## Storybook Preview
+
+<Canvas>
+    <Primary />
+</Canvas>
+
+## Customizing Colors
+
+The colors displayed by the `ColourPalette` are defined using CSS variables. By modifying these variables in the application's CSS, you can change the appearance of the color palette.
+
+### Example Customization:
+
+```css
+:root {
+  --primary-color: #ff5733;
+  --secondary-color: #33ff57;
+  --accent-color: #3357ff;
+  --background-color: #f0f0f0;
+  --text-color: #333333;
+}
+```
+
+The updated colors will automatically be reflected in the `ColourPalette` component:
+
+```jsx
+<ColourPalette />
+```
+
+### Conclusion:
+
+The `ColourPalette` component is a flexible, reusable component for displaying and managing color palettes in your application. By utilizing CSS variables, the color palette can easily adapt to different themes or design systems.

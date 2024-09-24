@@ -1,0 +1,59 @@
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2ecc71;
+    --accent-color: #e74c3c;
+    --background-color: #ecf0f1;
+    --text-color: #2c3e50;
+    --additional-color1: #9b59b6;
+    --additional-color2: #f1c40f;
+    --additional-color3: #e67e22;
+}
+
+.paletteContainer {
+    display: flex;
+    gap: 10px;
+}
+
+.colourContainer {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    color: white;
+}
+
+/* Individual color classes */
+.primaryColor {
+    background-color: var(--primary-color);
+}
+
+.secondaryColor {
+    background-color: var(--secondary-color);
+}
+
+.accentColor {
+    background-color: var(--accent-color);
+}
+
+.backgroundColor {
+    background-color: var(--background-color);
+    color: black; /* Adjust for light background */
+}
+
+.textColor {
+    background-color: var(--text-color);
+}
+
+.additionalColor1 {
+    background-color: var(--additional-color1);
+}
+
+.additionalColor2 {
+    background-color: var(--additional-color2);
+}
+
+.additionalColor3 {
+    background-color: var(--additional-color3);
+}
